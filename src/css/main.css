@@ -1,43 +1,21 @@
-@import url(font-awesome.min.css);
 @import url(minireset.min.css);
 @import url(loading.css);
+@import url(ripple.css);
+@import url(shake.css);
 
-
-@keyframes fadenum {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-body .content div {
-    display: none;
-}
-
-#home {
-    display: block;
-}
-
-body {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+html, body {
     margin: 0;
-    /*z-index: 100;*/
+    padding: 0;
+    height: 100%;
+    width: 100%;
 }
 
 body .background {
-    background-image: url("../../assets/bg.jpg");
+    background-image: url("../../assets/img/bg.jpg");
     float: left;
     width: 100%;
     height: 100%;
     text-align: center;
-    /*line-height: 600px;*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -50,62 +28,264 @@ body .background {
     z-index: -1;
 }
 
+.icon-normal {
+    /*display: none;*/
+    display: inline-block;
+}
+
+.icon-outline {
+    /*display: inline-block;*/
+    display: none;
+}
+
+.btn .icon-normal {
+    display: none;
+}
+
+.btn .icon-outline {
+    display: block;
+}
+
+/*#home_push .icon-outline {*/
+/*    display: none;*/
+/*}*/
+
+/*#home_push .icon-normal {*/
+/*    display: inline-block;*/
+/*}*/
+
+a {
+    text-decoration-line: none;
+}
+
 body .main-center {
+    height: 100%;
+    width: 100%;
+    /*line-height: 100%;*/
+}
+
+.sidebarbox {
     display: flex;
-    margin: 2em 1em;
-    background: rgba(255, 255, 255, .5);
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-    overflow: hidden;
-    width: 50em;
-    height: 30em;
+    float: left;
+    height: 100%;
+    width: 100px;
+    align-items: center;
 }
 
-body .sidebar {
-    width: 20%;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-}
 
-body .sidebar .avatar img {
-    border-radius: 100%;
-    border: 5px #fff solid;
-}
-
-body .sidebar .menu {
-    margin-top: 2em;
-    flex: 1;
-}
-
-body .sidebar .menu li {
-    margin-top:1em;
-}
-
-body .sidebar .menu li a {
-    color: white;
+.btn {
+    position: absolute;
+    top: 2vh;
+    left: 2vh;
+    font-size: 40px;
+    text-decoration: none;
+    color: #2c3e50;
     cursor: pointer;
 }
 
-body .content {
-    flex: 1;
-    padding: 1em;
+.sidebarbox .sidebar {
+    float: left;
+    width: 80px;
+    margin-left: -80px;
+    height: 405px;
+    background-color: #5f9ea0;
+    overflow: hidden;
+    transition: 0.8s all;
+    border-radius: 0 25px 25px 0;
 }
 
-body .content-item {
+.sidebarbox .sidebar-show {
+    margin-left: 0;
+}
 
+.sidebar .avatar {
+}
+
+.sidebar .avatar img {
+    border-radius: 100px;
+    margin: 10px auto;
+    display: block;
+    height: 80%;
+    width: 80%;
+    border: 5px #fff solid;
+}
+
+.sidebar ul {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar ul li {
+    list-style: none;
+}
+
+.sidebar ul li a {
+    color: white;
+    height: 80px;
+    width: 100%;
+    font-size: 40px;
+    line-height: 85px;
+    text-align: center;
+    display: block;
+    transition: 0.6s all;
+    cursor: pointer;
+}
+
+.sidebar ul li a:hover {
+    background: #7faeb0;
+}
+
+.content-item {
+    display: none;
+}
+
+#home {
+    display: block;
+}
+
+.contentbox {
+    height: 100%;
+    width: 100%;
+    padding: 10vh 10vw 10vh 10vw;
+}
+
+.content-item {
+    -webkit-animation: fadenum .5s;
+    -moz-animation: fadenum .5s;
+    animation: fadenum .5s;
+}
+
+.content-item {
+    height: 80vh;
+    width: 80vw;
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, .5);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    padding: 5% 10% 5% 10%;
 }
 
 #home h1 {
-    margin-top: .7em;
-    font-size: 3em;
+    font-size: 8vh;
 }
 
-#home p {
-    margin-top: 6em;
+#home #hitokoto {
+    font-size: 3vh;
+    padding: 15% 0;
 }
 
-#contact.items {
+#home #hitokoto_content {
+    margin: auto;
+    font-size: 3vh;
+    width: 100%;
+}
+
+#home #hitokoto_from {
+    margin-right: 0;
+    font-size: 2vh;
+    width: 100%;
+    text-align: right;
+}
+
+#contact h1 {
+    font-size: 6vh;
+}
+
+#contact .contact-items-1 {
+    display: block;
+}
+
+#contact .contact-items-2 {
+    display: block;
+}
+
+#contact .contact-items a {
+    color: rgba(0, 0, 0, 0.8);
+    width: 30%;
+    /*border-radius: 100%;*/
+    display: inline-block;
+    transition: transform .3s;
+    margin-left: auto;
+    margin-top: 10vh;
+}
+
+#contact .contact-items a ion-icon {
+    display: block;
+    font-size: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#contact .contact-items a span {
+    display: block;
+    font-size: 3vh;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%;
+}
+
+#contact ion-icon {
+    font-size: 10vh;
+}
+
+#contact .contact-items a:hover {
+    animation: shake 5s infinite ease-in-out;
+}
+
+#timetable {
+
+}
+
+#timetable h1 {
+    display: block;
+    height: 10%;
+    font-size: 5vh;
+}
+
+#timetable table {
+    height: 90%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5vh 5vh 0 0;
+}
+
+#timetable table th {
+    font-size: 2vh;
+}
+
+#timetable table td {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+
+#timetable table .class-name {
+    display: block;
+    font-size: 2.5vh;
+}
+
+#timetable table .class-room {
+    display: block;
+    font-size: 1.5vh;
+}
+
+#timetable table .class-none {
+    font-size: 4vh;
+    margin: auto;
+}
+
+#archives {
+    margin: auto;
+}
+
+#archives p {
+    margin: auto;
+    display: block;
+    font-size: 4vh;
+    height: 100%;
+    line-height: 50vh;
+}
+
+#archives h1 {
+    font-size: 5vh;
 }

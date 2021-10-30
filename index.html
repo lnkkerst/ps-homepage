@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="src/css/main.css">
     <script src="src/js/jquery-3.6.0.min.js"></script>
     <script src="src/js/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
@@ -34,81 +36,92 @@
 </div>
 
 <div class="main-center">
-    <div class="sidebar">
-        <div class="avatar">
-            <img src="assets/avatar.jpg" alt="avatar"/>
+    <div class="sidebarbox">
+        <div class="sidebar sidebar-show">
+            <div class="avatar">
+                <img src="assets/img/avatar.jpg" alt="avatar"/>
+            </div>
+            <ul class="menu">
+                <li>
+                    <a data-target="#home" class="ripple" id="home_push">
+                        <ion-icon name="home" class="icon-normal"></ion-icon>
+                        <ion-icon name="home-outline" class="icon-outline"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#archives" class="ripple">
+                        <ion-icon name="archive" class="icon-normal"></ion-icon>
+                        <ion-icon name="archive-outline" class="icon-outline"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#timetable" class="ripple">
+                        <ion-icon name="calendar" class="icon-normal"></ion-icon>
+                        <ion-icon name="calendar-outline" class="icon-outline"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#contact" class="ripple">
+                        <ion-icon name="at-circle" class="icon-normal"></ion-icon>
+                        <ion-icon name="at-circle-outline" class="icon-outline"></ion-icon>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <ul class="menu">
-            <li>
-                <a data-target="#home">home</a>
-            </li>
-            <li>
-                <a data-target="#archives">archives</a>
-            </li>
-            <li>
-                <a data-target="#timetable">timetable</a>
-            </li>
-            <li>
-                <a data-target="#contact">contact</a>
-            </li>
-        </ul>
     </div>
-    <div class="content">
+    <a class="btn ripple">
+        <ion-icon name="grid" class="icon-normal"></ion-icon>
+        <ion-icon name="grid-outline" class="icon-outline"></ion-icon>
+    </a>
+    <div class="contentbox">
         <div class="content-item" id="home">
             <h1>pathsun's homepage</h1>
-            <p id="hitokoto">loading...</p>
+            <div id="hitokoto">
+                loading...
+            </div>
         </div>
         <div class="content-item" id="archives">
-
+            <h1>Archives</h1>
+            <div id="archives_content"></div>
         </div>
         <div class="content-item" id="timetable">
+            <h1>Timetable</h1>
             <table id="timetable-content">
             </table>
         </div>
         <div class="content-item" id="contact">
-            <table class="contact-items">
-                <tr>
-                    <td>
-                        <a href="https://qm.qq.com/cgi-bin/qm/qr?k=gwYjORcTzd2I82_XL8pEygNtCAob8F0p&noverify=0"
-                           target="_blank">
-                            <span class="contact-item-qq"></span>
-                            <span class="contact-item-text">QQ</span>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="http://82.156.22.207">
-                            <span class="contact-icon-blog"></span>
-                            <span class="contact-item-text">Blog</span>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="https://weibo.com/u/6992365350">
-                            <span class="contact-icon-weibo"></span>
-                            <span class="contact-item-text">Weibo</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="https://www.github.com/lnkkerst">
-                            <span class="contact-icon-github"></span>
-                            <span class="contact-item-text">Github</span>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="https://twitter.com/lnkkerst1">
-                            <span class="contact-icon-twitter"></span>
-                            <span class="contact-item-text">Twitter</span>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="mailto:1593510417@qq.com">
-                            <span class="contact-icon-email"></span>
-                            <span class="contact-item-text">Email</span>
-                        </a>
-                    </td>
-                </tr>
-            </table>
+            <h1>Contact me</h1>
+            <div class="contact-items">
+                <div class="contact-items-1">
+                    <a href="https://qm.qq.com/cgi-bin/qm/qr?k=gwYjORcTzd2I82_XL8pEygNtCAob8F0p&noverify=0"
+                       target="_blank">
+                        <ion-icon src="assets/svg/qq.svg"></ion-icon>
+                        <span class="contact-item-text">QQ</span>
+                    </a>
+                    <a href="http://82.156.22.207" target="_blank">
+                        <ion-icon name="albums"></ion-icon>
+                        <span class="contact-item-text">Blog</span>
+                    </a>
+                    <a href="https://weibo.com/u/6992365350" target="_blank">
+                        <ion-icon src="assets/svg/weibo.svg"></ion-icon>
+                        <span class="contact-item-text">Weibo</span>
+                    </a>
+                </div>
+                <div class="contact-items-2">
+                    <a href="https://www.github.com/lnkkerst" target="_blank">
+                        <ion-icon name="logo-github"></ion-icon>
+                        <span class="contact-item-text">Github</span>
+                    </a>
+                    <a href="https://twitter.com/lnkkerst1" target="_blank">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                        <span class="contact-item-text">Twitter</span>
+                    </a>
+                    <a href="mailto:1593510417@qq.com">
+                        <ion-icon name="mail"></ion-icon>
+                        <span class="contact-item-text">Email</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

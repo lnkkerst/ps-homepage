@@ -3,16 +3,12 @@ function unicodeDecode(str) {
 }
 
 function getHitokoto() {
-    $.ajax({
-        url: "https://v1.hitokoto.cn/",
-        dataType: "json",
-        success: function (result) {
-            $("#hitokoto").text(result.hitokoto + " —— " + result.from);
-        },
-        error: function () {
-            $("#hitokoto").text("access rror");
-        }
-    });
+    $.getJSON("https://v1.hitokoto.cn/", function (result) {
+        $("#hitokoto").html("<p id='hitokoto_content'>" + result.hitokoto + "</p>" +
+            "<p id='hitokoto_from'>—— " + result.from + "<\p>");
+    }).fail(function () {
+        $("#hitokoto").text("error");
+    })
 }
 
 function switchTo(target) {
@@ -22,12 +18,26 @@ function switchTo(target) {
     $(target).show();
 }
 
+function getArchives() {
+    $.ajax({
+        type: "GET",
+        url: "http://82.156.22.207/blog/index.php/feed/",
+        dataType: "text",
+        success: function (resultOri) { // reserved
+            $("#archives_content").html("<p>nothing here...</p>");
+        },
+        error: function () {
+            $("#archives_content").html("<p>nothing here...</p>");
+        }
+    });
+}
+
 function parseTimetable() {
     $.getJSON("src/json/timetable.json", function (timetable) {
         let htmlTT = $("<table></table>");
         let head = $("<tr></tr>");
         for (let i = 1; i <= 5; ++i) {
-            head.append("<th></th>");
+            head.append("<th>" + ["一", "二", "三", "四", "五"][i - 1] + "</th>");
         }
         htmlTT.append(head);
         for (let i = 1; i <= 4; ++i) {
@@ -35,7 +45,7 @@ function parseTimetable() {
             for (let j = 1; j <= 5; ++j) {
                 let newBlock = $("<td></td>")
                 if (timetable[j - 1][i - 1] === "none") {
-                    newBlock.append("<span class='class-none'></span>")
+                    newBlock.append("<span class='class-none'><ion-icon name='fish'></ion-icon></span>")
                 } else {
                     newBlock.append("<span class='class-name'>" +
                         unicodeDecode(timetable[j - 1][i - 1]['name']) + "</span>");
@@ -57,5 +67,12 @@ $('document').ready(function (e) {
     $(".menu a").click(function () {
         switchTo($(this).attr('data-target'));
     });
-    $("#hitokoto").text(getHitokoto());
+    getHitokoto();
+    $(".btn").click(function () {
+        $(".sidebar").toggleClass("sidebar-show");
+    })
+    getArchives();
+    $("#hitokoto").click(function () {
+        getHitokoto();
+    });
 });
