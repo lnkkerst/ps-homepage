@@ -1,7 +1,3 @@
-function unicodeDecode(str) {
-    return unescape(str.replace(/\\u/g, "%u"));
-}
-
 function getHitokoto() {
     $.getJSON("https://v1.hitokoto.cn/", function (result) {
         $("#hitokoto").html("<p id='hitokoto_content'>" + result.hitokoto + "</p>" +
@@ -48,9 +44,9 @@ function parseTimetable() {
                     newBlock.append("<span class='class-none'><ion-icon name='fish'></ion-icon></span>")
                 } else {
                     newBlock.append("<span class='class-name'>" +
-                        unicodeDecode(timetable[j - 1][i - 1]['name']) + "</span>");
+                        timetable[j - 1][i - 1]['name'] + "</span>");
                     newBlock.append("<span class='class-room'>" +
-                        unicodeDecode(timetable[j - 1][i - 1]['room']) + "</span>");
+                        timetable[j - 1][i - 1]['room'] + "</span>");
                 }
                 newRow.append(newBlock);
             }
